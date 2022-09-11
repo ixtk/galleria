@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+:root {
+  --primary-dark: hsl(0, 0%, 0%);
+  --secondary-dark: hsl(0, 0%, 49%);
+  --primary-light: hsl(0, 0%, 100%);
+  --secondary-light: hsl(0, 0%, 95%);
+  --tertiary-light: hsl(0, 0%, 90%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1.4;
+}
