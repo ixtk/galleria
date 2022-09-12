@@ -1,12 +1,16 @@
 import { Header } from "@/components/Header"
 import { Gallery } from "@/components/Gallery"
+import { PaintingPage } from "@/components/PaintingPage"
 import "./App.scss"
 
 export const App = () => {
   return (
     <>
       <Header />
-      <Gallery />
+      <main>
+        {/* <Gallery /> */}
+        <PaintingPage />
+      </main>
     </>
   )
 }

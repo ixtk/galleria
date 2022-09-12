@@ -1,0 +1,25 @@
+.controls-container {
+  display: flex;
+  align-items: center;
+  column-gap: 1.5rem;
+  justify-content: space-between;
+  border-top: 2px solid var(--tertiary-light);
+
+  .painting-name {
+    margin-bottom: 0.6rem;
+    margin-top: 0;
+  }
+}
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+
+  button {
+    padding: 1rem;
+  }
+}
+
+.container.controls-container {
+  padding: 1rem 1.5rem;
+}

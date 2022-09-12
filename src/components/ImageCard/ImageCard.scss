@@ -1,10 +1,9 @@
-.image-card {
-  position: relative;
-  color: var(--primary-light);
+.image-card a {
+  display: block;
+}
 
-  a {
-    display: block;
-  }
+.image-container {
+  position: relative;
 
   img {
     width: 100%;
@@ -12,6 +11,7 @@
 }
 
 .image-overlay {
+  color: var(--primary-light);
   position: absolute;
   bottom: 0;
   padding: 2rem;
