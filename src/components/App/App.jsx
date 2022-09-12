@@ -1,5 +1,12 @@
+import { Header } from "@/components/Header"
+import { Gallery } from "@/components/Gallery"
 import "./App.scss"
 
 export const App = () => {
-  return <h1>Hello World</h1>
+  return (
+    <>
+      <Header />
+      <Gallery />
+    </>
+  )
 }

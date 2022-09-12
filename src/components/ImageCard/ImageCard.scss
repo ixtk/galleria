@@ -1,0 +1,22 @@
+.image-card {
+  position: relative;
+  color: var(--primary-light);
+
+  a {
+    display: block;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 2rem;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: linear-gradient(0deg, hsla(0, 0%, 0%, 0.753) 0%, transparent 100%);
+}
