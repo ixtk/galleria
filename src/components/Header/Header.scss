@@ -1,5 +1,5 @@
 .header-container {
-  border-bottom: 1px solid var(--tertiary-light);
+  border-bottom:  var(--border-light);
 }
 
 header {
@@ -10,7 +10,6 @@ header {
 }
 
 .slideshow-btn {
-  text-transform: uppercase;
-  letter-spacing: 2px;
   color: var(--secondary-dark);
+  width: min-content;
 }

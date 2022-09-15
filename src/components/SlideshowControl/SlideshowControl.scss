@@ -3,7 +3,7 @@
   align-items: center;
   column-gap: 1.5rem;
   justify-content: space-between;
-  border-top: 2px solid var(--tertiary-light);
+  border-top: var(--border-light);
 
   .painting-name {
     margin-bottom: 0.6rem;

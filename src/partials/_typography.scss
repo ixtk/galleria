@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+body {
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1.4;
+}
+
+.view-image-btn,
+.close-btn,
+.painting-description a,
+.view-image-btn span,
+.slideshow-btn {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.close-btn,
+.view-image-btn span,
+.painting-year {
+  font-weight: 700;
+}
+
+.slideshow-btn {
+  text-align: right;
+}

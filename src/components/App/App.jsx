@@ -9,7 +9,7 @@ export const App = () => {
       <Header />
       <main>
         {/* <Gallery /> */}
-        <PaintingPage />
+        <PaintingPage paintingName="Starry Night" />
       </main>
     </>
   )

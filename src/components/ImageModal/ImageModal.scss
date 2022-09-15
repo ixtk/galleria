@@ -1,0 +1,25 @@
+.modal-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.modal-content {
+  position: absolute;
+}
+
+.close-btn {
+  color: var(--primary-light);
+  padding: 0.5rem 0;
+  position: absolute;
+  right: 0;
+  top: -1rem;
+  translate: 0 -100%;
+}
+
+.painting-img {
+  max-height: 70vmin;
+}
