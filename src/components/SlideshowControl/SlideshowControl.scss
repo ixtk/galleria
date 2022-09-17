@@ -32,10 +32,6 @@
   }
 }
 
-.container.controls-wrapper {
-  padding: 1rem 1.5rem;
-}
-
 @include mixins.for-min-size(1000px) {
   .control-wrapper {
     border-top: none;

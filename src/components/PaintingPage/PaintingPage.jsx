@@ -30,8 +30,13 @@ export const PaintingPage = ({ paintingName }) => {
               alt={painting.artist.name}
             />
           </div>
+          <img
+            className="artist-img-lg"
+            src={`${baseUrl}/${painting.artist.image}`}
+            alt={painting.artist.name}
+          />
         </div>
-        <div className="painting-description">
+        <div className="description-wrapper">
           <span className="painting-year">{painting.year}</span>
           <p>{painting.description}</p>
           <a href={painting.source} target="_blank">

@@ -5,6 +5,10 @@
   position: fixed;
   inset: 0;
   z-index: 50;
+
+  .painting-img {
+    max-height: 70vmin;
+  }
 }
 
 .modal-content {
@@ -18,8 +22,4 @@
   right: 0;
   top: -1rem;
   translate: 0 -100%;
-}
-
-.painting-img {
-  max-height: 70vmin;
 }

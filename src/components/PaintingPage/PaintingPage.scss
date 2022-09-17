@@ -14,7 +14,11 @@
   translate: 0 -50%;
   left: 0;
   width: 85%;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
+
+  .painting-name {
+    margin-top: 0;
+  }
 }
 
 .view-image-btn {
@@ -25,8 +29,8 @@
   column-gap: 1rem;
   align-items: center;
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
+  top: 1rem;
+  left: 1rem;
 
   svg {
     width: 17px;
@@ -40,18 +44,21 @@
 
 .artist-img {
   position: absolute;
-  translate: 0 1rem;
-  max-width: 70px;
+  translate: 0 1.5rem;
+  max-width: 15vmin;
 }
 
-.painting-description {
+.artist-img-lg {
+  display: none;
+}
+
+.description-wrapper {
   position: relative;
   margin-top: 14rem;
 
   a {
     color: var(--secondary-dark);
     text-decoration: underline;
-    display: block;
     margin: 4rem 0;
   }
 }
@@ -64,4 +71,102 @@
   translate: 0 -70%;
   color: var(--secondary-light);
   z-index: -1;
+}
+
+@include mixins.for-min-size(700px) {
+  .painting-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: min-content;
+    translate: -60px 0;
+  }
+
+  .painting-overlay {
+    left: unset;
+    right: 0;
+    top: 0;
+    translate: 50% 0;
+    width: 60%;
+    padding: 0 0 3rem 3rem;
+
+    .painting-name {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .artist-img {
+      left: 50%;
+      translate: 1.5rem 0;
+      top: 100%;
+      width: 120px;
+    }
+  }
+
+  .description-wrapper {
+    margin-top: 10rem;
+    max-width: 50ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .painting-year {
+    font-size: 10rem;
+    right: unset;
+    translate: -10% -60%;
+  }
+
+  .painting-img {
+    max-width: 500px;
+    height: 550px;
+    object-fit: cover;
+  }
+}
+
+@include mixins.for-min-size(820px) {
+  .painting-year {
+    translate: -25% -60%;
+  }
+}
+
+@include mixins.for-min-size(1200px) {
+  .painting-page {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6rem;
+  }
+
+  .artist-img-lg {
+    display: block;
+    position: absolute;
+    right: 0;
+    translate: calc(100% + var(--gap-size)) -50%;
+  }
+
+  .painting-wrapper {
+    translate: 0 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .painting-overlay {
+    translate: 60% 0;
+
+    .artist-img {
+      display: none;
+    }
+  }
+
+  .painting-year {
+    right: 0;
+    translate: 0 -60%;
+  }
+
+  .description-wrapper {
+    max-width: 35ch;
+    margin-right: 4rem;
+  }
+
+  .description-wrapper {
+    margin-top: 6rem;
+  }
 }
