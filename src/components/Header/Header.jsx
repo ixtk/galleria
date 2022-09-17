@@ -3,7 +3,7 @@ import "./Header.scss"
 
 export const Header = () => {
   return (
-    <div className="container header-container">
+    <div className="header-wrapper">
       <header>
         <Logo />
         <button className="slideshow-btn">start slideshow</button>

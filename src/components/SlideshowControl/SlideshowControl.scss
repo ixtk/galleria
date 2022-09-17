@@ -1,9 +1,17 @@
-.controls-container {
+@use '@/partials/mixins';
+
+
+.control-wrapper {
+  @include mixins.container;
+  border-top: var(--border-light);
+}
+
+.slideshow-control {
   display: flex;
   align-items: center;
   column-gap: 1.5rem;
   justify-content: space-between;
-  border-top: var(--border-light);
+  padding: var(--gap-size) 0;
 
   .painting-name {
     margin-bottom: 0.6rem;
@@ -18,8 +26,22 @@
   button {
     padding: 1rem;
   }
+
+  button:last-of-type {
+    padding-right: 0;
+  }
 }
 
-.container.controls-container {
+.container.controls-wrapper {
   padding: 1rem 1.5rem;
+}
+
+@include mixins.for-min-size(1000px) {
+  .control-wrapper {
+    border-top: none;
+  }
+
+  .slideshow-control {
+    border-top: var(--border-light);
+  }
 }

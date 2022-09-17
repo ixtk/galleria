@@ -1,5 +1,8 @@
-.header-container {
+@use '@/partials/mixins';
+
+.header-wrapper {
   border-bottom:  var(--border-light);
+  @include mixins.container;
 }
 
 header {
@@ -12,4 +15,20 @@ header {
 .slideshow-btn {
   color: var(--secondary-dark);
   width: min-content;
+}
+
+@include mixins.for-min-size(600px) {
+  .slideshow-btn {
+    width: auto;
+  }
+}
+
+@include mixins.for-min-size(1000px) {
+  header {
+    border-bottom: var(--border-light);
+  }
+
+  .header-wrapper {
+    border: none;
+  }
 }

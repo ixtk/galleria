@@ -1,5 +1,11 @@
-.image-card a {
-  display: block;
+.image-card {
+  a {
+    display: block;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
 }
 
 .image-container {

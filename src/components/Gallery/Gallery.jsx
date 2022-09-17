@@ -14,9 +14,5 @@ export const Gallery = () => {
     )
   })
 
-  return (
-    <div className="container">
-      <div className="gallery">{imageCards}</div>
-    </div>
-  )
+  return <div className="gallery">{imageCards}</div>
 }

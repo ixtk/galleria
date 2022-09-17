@@ -1,5 +1,33 @@
+@use '@/partials/mixins';
+
+:root {
+  --gallery-column-count: 1;
+}
+
 .gallery {
-  display: grid;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
+  column-count: var(--gallery-column-count);
+  column-gap: var(--gap-size);
+  @include mixins.container(var(--gap-size));
+}
+
+.image-card { 
+  margin-bottom: var(--gap-size);
+}
+
+@include mixins.for-min-size(550px) {
+  :root {
+    --gallery-column-count: 2;
+  }
+}
+
+@include mixins.for-min-size(800px) {
+  :root {
+    --gallery-column-count: 3;
+  }
+}
+
+@include mixins.for-min-size(1100px) {
+  :root {
+    --gallery-column-count: 4;
+  }
 }

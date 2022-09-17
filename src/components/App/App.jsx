@@ -8,8 +8,8 @@ export const App = () => {
     <>
       <Header />
       <main>
-        {/* <Gallery /> */}
-        <PaintingPage paintingName="Starry Night" />
+        <Gallery />
+        {/* <PaintingPage paintingName="Starry Night" /> */}
       </main>
     </>
   )

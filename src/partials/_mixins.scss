@@ -1,0 +1,18 @@
+@use './functions';
+
+@mixin for-min-size($size) {
+  @media (min-width: functions.rem($size)) {
+    @content;
+  }
+}
+
+@mixin container($margin-y: 0, $padding-y: 0) {
+  max-width: functions.rem(1280px);
+  margin: $margin-y auto;
+  padding: $padding-y var(--gap-size);
+  
+  @include for-min-size(1400px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

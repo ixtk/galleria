@@ -10,7 +10,7 @@ export const PaintingPage = ({ paintingName }) => {
 
   return (
     <>
-      <div className="painting-page container">
+      <div className="painting-page">
         <div className="painting-wrapper">
           <button className="view-image-btn">
             <MaximizeIcon />
@@ -39,10 +39,10 @@ export const PaintingPage = ({ paintingName }) => {
           </a>
         </div>
       </div>
-      <ImageModal
+      {/* <ImageModal
         imageUrl={`${baseUrl}/${painting.images.gallery}`}
         altText={`${painting.name} by ${painting.artist.name}`}
-      />
+      /> */}
       <SlideshowControl
         paintingAuthor={painting.artist.name}
         paintingName={paintingName}
