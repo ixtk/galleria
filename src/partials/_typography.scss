@@ -2,7 +2,8 @@
 
 body {
   font-family: 'Libre Baskerville', serif;
-  line-height: 1.4;
+  line-height: 1.5;
+  color: var(--primary-dark);
 }
 
 .view-image-btn,
@@ -16,10 +17,60 @@ body {
 
 .close-btn,
 .view-image-btn span,
-.painting-year {
+.painting-year,
+.description-wrapper p,
+.source-link,
+.slideshow-btn {
   font-weight: 700;
 }
 
 .slideshow-btn {
   text-align: right;
+}
+
+.description-wrapper {
+  color: var(--tertiary-light);
+}
+
+.slideshow-btn,
+.painting-author,
+.description-wrapper p,
+.source-link {
+  color: var(--secondary-dark);
+}
+
+.close-btn,
+.gallery,
+.view-image-btn {
+  color: var(--primary-light);
+}
+
+.gallery .painting-author {
+  color: hsl(0, 0%, 80%);
+}
+
+.painting-name {
+  margin-bottom: 0.6rem;
+  margin-top: 0;
+}
+
+.slideshow-control span {
+  color: var(--primary-dark);
+}
+
+.source-link,
+.view-image-btn,
+.slideshow-btn,
+.close-btn {
+  font-size: 0.8rem;
+}
+
+.slideshow-control {
+  .painting-name {
+    font-size: 1.3rem;
+  }
+
+  .painting-author {
+    font-size: 0.9em;
+  }
 }

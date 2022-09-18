@@ -4,15 +4,15 @@ export const ImageCard = ({ thumbnailUrl, paintingName, paintingAuthor }) => {
   return (
     <div className="image-card">
       <a href="#">
-        <div className="image-container">
+        <div className="image-wrapper">
           <img
             src={thumbnailUrl}
             alt={`${paintingName} by ${paintingAuthor}`}
           />
-          <div className="image-overlay">
-            <h2 className="painting-name">{paintingName}</h2>
-            <span className="painting-author">{paintingAuthor}</span>
-          </div>
+        </div>
+        <div className="image-overlay">
+          <h2 className="painting-name">{paintingName}</h2>
+          <span className="painting-author">{paintingAuthor}</span>
         </div>
       </a>
     </div>

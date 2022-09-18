@@ -8,6 +8,7 @@
   column-count: var(--gallery-column-count);
   column-gap: var(--gap-size);
   @include mixins.container(var(--gap-size));
+  margin-bottom: 4rem;
 }
 
 .image-card { 

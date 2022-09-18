@@ -10,16 +10,3 @@
   --border-light: 2px solid var(--tertiary-light);
   --gap-size: 1.5rem;
 }
-
-body {
-  margin: 0;
-
-  &::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-color: hsla(0, 0%, 0%, 0.85);
-    visibility: hidden;
-  }
-  // overflow: hidden;
-}

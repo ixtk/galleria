@@ -1,28 +1,39 @@
+@use '@/partials/mixins';
+
 .image-card {
   a {
     display: block;
-  }
+    position: relative;
 
-  h2 {
-    margin-top: 0;
+    &:hover .image-wrapper::before {
+      visibility: visible;
+      opacity: 1;
+    }
   }
-}
-
-.image-container {
-  position: relative;
 
   img {
     width: 100%;
   }
 }
 
+.image-wrapper::before {
+  content: '';
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  inset: 0;
+  background: hsla(0, 0%, 100%, 0.2);
+  @include mixins.transition(visibility, opacity);
+}
+
 .image-overlay {
-  color: var(--primary-light);
   position: absolute;
   bottom: 0;
-  padding: 2rem;
-  left: 0;
-  right: 0;
+  padding: var(--gap-size);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   z-index: 50;
-  background: linear-gradient(0deg, hsla(0, 0%, 0%, 0.753) 0%, transparent 100%);
+  background: linear-gradient(0deg, hsla(0, 0%, 0%, 0.753) 20%, transparent 60%);
 }

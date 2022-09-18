@@ -8,7 +8,7 @@ export const App = () => {
     <>
       <Header />
       <main>
-        {/* <Gallery /> */}
+        <Gallery />
         <PaintingPage paintingName="Starry Night" />
       </main>
     </>

@@ -11,8 +11,14 @@
   margin: $margin-y auto;
   padding: $padding-y var(--gap-size);
   
-  @include for-min-size(1400px) {
+  @include for-min-size(1328px) {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+@mixin transition($extra-properties...) {
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-property: color, $extra-properties;
 }

@@ -1,30 +1,44 @@
 @use '@/partials/mixins';
 
-
-.control-wrapper {
-  @include mixins.container;
-  border-top: var(--border-light);
-}
-
 .slideshow-control {
   display: flex;
   align-items: center;
   column-gap: 1.5rem;
   justify-content: space-between;
-  padding: var(--gap-size) 0;
+  @include mixins.container(0, var(--gap-size));
+  border-top: var(--border-light);
+  position: relative;  
+}
 
-  .painting-name {
-    margin-bottom: 0.6rem;
-    margin-top: 0;
-  }
+.progress-bar {
+  display: block;
+  position: absolute;
+  background-color: var(--primary-dark);
+  height: 1px;
+  width: 30%;
+  top: 0;
+  translate: 0 -1px;
+  left: 0;
+  right: 0;
 }
 
 .control-buttons {
   display: flex;
   align-items: center;
+  column-gap: 0.5rem;
 
   button {
-    padding: 1rem;
+    padding: 0.5rem;
+    @include mixins.transition;
+  }
+
+  button:hover {
+    color: var(--secondary-dark);
+  }
+
+  button:disabled {
+    color: hsla(0, 0%, 0%, 0.2);
+    pointer-events: none;
   }
 
   button:last-of-type {
@@ -33,11 +47,8 @@
 }
 
 @include mixins.for-min-size(1000px) {
-  .control-wrapper {
-    border-top: none;
-  }
-
   .slideshow-control {
     border-top: var(--border-light);
+    position: relative;
   }
 }

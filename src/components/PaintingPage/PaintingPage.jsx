@@ -22,7 +22,7 @@ export const PaintingPage = ({ paintingName }) => {
             alt={`${painting.name} by ${painting.artist.name}`}
           />
           <div className="painting-overlay">
-            <h2 className="painting-name">{paintingName}</h2>
+            <h1 className="painting-name">{paintingName}</h1>
             <span className="painting-author">{painting.artist.name}</span>
             <img
               className="artist-img"
@@ -39,7 +39,7 @@ export const PaintingPage = ({ paintingName }) => {
         <div className="description-wrapper">
           <span className="painting-year">{painting.year}</span>
           <p>{painting.description}</p>
-          <a href={painting.source} target="_blank">
+          <a className="source-link" href={painting.source} target="_blank">
             go to source
           </a>
         </div>

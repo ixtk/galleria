@@ -1,3 +1,5 @@
+@use '@/partials/mixins';
+
 .modal-wrapper {
   display: flex;
   align-items: center;
@@ -16,10 +18,25 @@
 }
 
 .close-btn {
-  color: var(--primary-light);
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0.5rem 0.5rem;
   position: absolute;
   right: 0;
   top: -1rem;
   translate: 0 -100%;
+  @include mixins.transition;
+}
+
+.close-btn:hover {
+  color: hsl(0, 0%, 80%);
+}
+
+body {
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: hsla(0, 0%, 0%, 0.85);
+    visibility: hidden;
+  }
+  // overflow: hidden;
 }
