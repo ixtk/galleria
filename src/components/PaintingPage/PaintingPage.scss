@@ -1,7 +1,7 @@
 @use '@/partials/mixins';
 
 .painting-page {
-  @include mixins.container(var(--gap-size), 5px);
+  @include mixins.container(calc(var(--gap-size) * 2), 5px);
 }
 
 .painting-wrapper {
@@ -29,7 +29,8 @@
   @include mixins.transition(background-color);
 
   &:hover {
-    background-color: hsla(0, 0%, 100%, 0.25);
+    background-color: hsla(0, 0%, 100%, 0.85);
+    color: var(--primary-dark);
   }
 
   svg {
@@ -125,9 +126,7 @@
   }
 
   .painting-img {
-    max-width: 500px;
-    height: 550px;
-    object-fit: cover;
+    max-width: 450px;
   }
 }
 
@@ -135,13 +134,17 @@
   .painting-year {
     translate: -25% -60%;
   }
+
+  .painting-img {
+    max-width: 500px;
+  }
 }
 
 @include mixins.for-min-size(1220px) {
   .painting-page {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 6rem;
+    margin-bottom: 7rem;
   }
 
   .artist-img-lg {
@@ -167,7 +170,8 @@
 
   .painting-year {
     right: 0;
-    translate: 0 -60%;
+    translate: 15% -45%;
+    font-size: 11rem;
   }
 
   .description-wrapper {
@@ -177,5 +181,16 @@
 
   .description-wrapper {
     margin-top: 6rem;
+
+    p {
+      margin-top: 3rem;
+      margin-bottom: 0;
+    }
+
+    a {
+      margin-top: 8rem;
+      margin-bottom: 0;
+    }
+
   }
 }

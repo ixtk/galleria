@@ -5,6 +5,7 @@ export const ImageCard = ({ thumbnailUrl, paintingName, paintingAuthor }) => {
     <div className="image-card">
       <a href="#">
         <div className="image-wrapper">
+          {/* TODO: fix layout shifts */}
           <img
             src={thumbnailUrl}
             alt={`${paintingName} by ${paintingAuthor}`}

@@ -8,7 +8,7 @@ body {
 
 .view-image-btn,
 .close-btn,
-.description-wrapper a,
+.source-link,
 .view-image-btn span,
 .slideshow-btn {
   text-transform: uppercase;
@@ -58,6 +58,10 @@ body {
   color: var(--primary-dark);
 }
 
+.painting-year {
+  color: var(--secondary-light);
+}
+
 .source-link,
 .view-image-btn,
 .slideshow-btn,
@@ -73,4 +77,12 @@ body {
   .painting-author {
     font-size: 0.9em;
   }
+}
+
+h1 {
+  line-height: 1.2;
+}
+
+.description-wrapper p {
+  line-height: 1.6;
 }

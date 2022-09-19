@@ -5,7 +5,7 @@ import "./SlideshowControl.scss"
 export const SlideshowControl = ({ paintingName, paintingAuthor }) => {
   return (
     <div className="slideshow-control">
-      <span className="progress-bar"></span>
+      <div className="progress-bar"></div>
       <div className="current-painting">
         <h2 className="painting-name">{paintingName}</h2>
         <span className="painting-author">{paintingAuthor}</span>

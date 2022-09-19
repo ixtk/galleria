@@ -16,11 +16,17 @@ export const PaintingPage = ({ paintingName }) => {
             <MaximizeIcon />
             <span>view image</span>
           </button>
-          <img
-            className="painting-img"
-            src={`${baseUrl}/${painting.images.gallery}`}
-            alt={`${painting.name} by ${painting.artist.name}`}
-          />
+          <picture>
+            <source
+              media="(min-width: 43.75rem)"
+              srcSet={`${baseUrl}/${painting.images.hero.large}`}
+            />
+            <img
+              className="painting-img"
+              src={`${baseUrl}/${painting.images.hero.small}`}
+              alt={`${painting.name} by ${painting.artist.name}`}
+            />
+          </picture>
           <div className="painting-overlay">
             <h1 className="painting-name">{paintingName}</h1>
             <span className="painting-author">{painting.artist.name}</span>
@@ -45,7 +51,7 @@ export const PaintingPage = ({ paintingName }) => {
         </div>
       </div>
       {/* <ImageModal
-        imageUrl={`${baseUrl}/${painting.images.gallery}`}
+        imageUrl={`${baseUrl}/${painting.images.hero.large}`}
         altText={`${painting.name} by ${painting.artist.name}`}
       /> */}
       <SlideshowControl
