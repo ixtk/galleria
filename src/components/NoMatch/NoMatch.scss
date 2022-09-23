@@ -1,0 +1,14 @@
+@use '@/partials/mixins';
+
+.error-page {
+  @include mixins.container(0, 0.5rem);
+
+  a {
+    text-decoration: underline;
+    @include mixins.transition;
+  }
+
+  a:hover {
+    color: var(--secondary-dark);
+  }
+}

@@ -33,21 +33,21 @@
   align-items: center;
   column-gap: 0.5rem;
 
-  button {
+  a {
     padding: 0.5rem;
     @include mixins.transition;
   }
 
-  button:hover {
+  a:hover {
     color: var(--secondary-dark);
   }
 
-  button:disabled {
+  a.disabled {
     color: hsla(0, 0%, 0%, 0.2);
     pointer-events: none;
   }
 
-  button:last-of-type {
+  a:last-of-type {
     padding-right: 0;
   }
 }

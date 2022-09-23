@@ -1,12 +1,16 @@
 import { SlideshowControl } from "@/components/SlideshowControl"
 import { ReactComponent as MaximizeIcon } from "@/assets/view-image.svg"
 import { ImageModal } from "@/components/ImageModal"
+import { formatPaintingName } from "@/utils"
 import data from "@/data.json"
 import "./PaintingPage.scss"
+import { useParams } from "react-router-dom"
 
-export const PaintingPage = ({ paintingName }) => {
-  const painting = data.find((p) => p.name === paintingName)
+export const PaintingPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL
+  const params = useParams()
+  const paintingName = formatPaintingName(params.paintingName, true)
+  const painting = data.find((e) => e.name.toLowerCase() === paintingName)
 
   return (
     <>
@@ -28,7 +32,7 @@ export const PaintingPage = ({ paintingName }) => {
             />
           </picture>
           <div className="painting-overlay">
-            <h1 className="painting-name">{paintingName}</h1>
+            <h1 className="painting-name">{painting.name}</h1>
             <span className="painting-author">{painting.artist.name}</span>
             <img
               className="artist-img"
@@ -56,7 +60,7 @@ export const PaintingPage = ({ paintingName }) => {
       /> */}
       <SlideshowControl
         paintingAuthor={painting.artist.name}
-        paintingName={paintingName}
+        paintingName={painting.name}
       />
     </>
   )
