@@ -15,7 +15,7 @@
   margin-bottom: var(--gap-size);
 }
 
-@include mixins.for-min-size(550px) {
+@include mixins.for-min-size(500px) {
   :root {
     --gallery-column-count: 2;
   }

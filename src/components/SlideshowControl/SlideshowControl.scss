@@ -6,7 +6,13 @@
   column-gap: 1.5rem;
   justify-content: space-between;
   @include mixins.container(0, var(--gap-size));
-  position: relative;
+  background-color: var(--primary-light);
+  position: sticky;
+  bottom: 0;
+
+  h2 {
+    font-size: 1.2rem;
+  }
 }
 
 .progress-bar {
@@ -31,7 +37,7 @@
 .control-buttons {
   display: flex;
   align-items: center;
-  column-gap: 0.5rem;
+  column-gap: 8px;
 
   a {
     padding: 0.5rem;
@@ -49,5 +55,12 @@
 
   a:last-of-type {
     padding-right: 0;
+  }
+}
+
+@include mixins.for-min-size(700px) {
+  .slideshow-control {
+    position: relative;
+    bottom: unset;
   }
 }

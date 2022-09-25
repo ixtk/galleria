@@ -1,5 +1,6 @@
 @use '@/partials/reset';
 @use '@/partials/typography';
+@use '@/partials/mixins';
 
 :root {
   --primary-dark: hsl(0, 0%, 0%);
@@ -8,5 +9,11 @@
   --secondary-light: hsl(0, 0%, 95%);
   --tertiary-light: hsl(0, 0%, 90%);
   --border-light: 2px solid var(--tertiary-light);
-  --gap-size: 1.5rem;
+  --gap-size: 1rem;
+}
+
+@include mixins.for-min-size(700px) {
+  :root {
+    --gap-size: 1.5rem;
+  }
 }

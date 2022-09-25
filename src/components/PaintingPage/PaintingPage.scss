@@ -2,10 +2,15 @@
 
 .painting-page {
   @include mixins.container(calc(var(--gap-size) * 2), 5px);
+  margin-bottom: 3rem;
 }
 
 .painting-wrapper {
   position: relative;
+
+  .painting-name {
+    font-size: 1.5rem;
+  }
 }
 
 .painting-overlay {
@@ -55,12 +60,15 @@
 
 .description-wrapper {
   position: relative;
-  margin-top: 14rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 1.5rem;
+  margin-top: 11rem;
 
   a {
     text-decoration: underline;
     padding: 0.5rem 0.5rem 0.5rem 0;
-    margin: 4rem 0;
     @include mixins.transition;
   }
 
@@ -74,11 +82,15 @@
   font-size: 7rem;
   top: 0;
   right: 0;
-  translate: 0 -70%;
+  translate: 0 -60%;
   z-index: -1;
 }
 
 @include mixins.for-min-size(700px) {
+  .painting-page {
+    margin-bottom: 4rem;
+  }
+
   .painting-wrapper {
     margin-left: auto;
     margin-right: auto;
@@ -100,7 +112,7 @@
     padding: 0 0 3rem 3rem;
 
     .painting-name {
-      font-size: 3rem;
+      font-size: 2rem;
       margin-bottom: 1.5rem;
     }
 
@@ -113,10 +125,10 @@
   }
 
   .description-wrapper {
-    margin-top: 10rem;
     max-width: 50ch;
     margin-left: auto;
     margin-right: auto;
+    row-gap: 2.5rem;
   }
 
   .painting-year {
@@ -138,12 +150,19 @@
   .painting-img {
     max-width: 500px;
   }
+
+  .painting-overlay {
+    .painting-name {
+      font-size: 2.5rem;
+    }
+  }
 }
 
 @include mixins.for-min-size(1220px) {
   .painting-page {
     display: flex;
     margin-bottom: 7rem;
+    column-gap: calc(128px + (var(--gap-size) * 3));
   }
 
   .artist-img-lg {
@@ -169,26 +188,18 @@
 
   .painting-year {
     right: 0;
-    translate: 15% -45%;
+    translate: 10% -20%;
     font-size: 11rem;
   }
 
   .description-wrapper {
-    max-width: 35ch;
-    margin-right: 4rem;
-  }
-
-  .description-wrapper {
-    margin-top: 6rem;
+    flex-basis: 35ch;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin-top: 0;
 
     p {
-      margin-top: 3rem;
-      margin-bottom: 0;
+      margin-top: 8rem;
     }
-
-    a {
-      margin-bottom: 0;
-    }
-
   }
 }

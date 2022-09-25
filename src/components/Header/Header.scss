@@ -11,10 +11,14 @@ header {
   align-items: center;
   column-gap: 1rem;
   padding: 1.5rem 0;
+
+  svg {
+    width: 125px;
+    height: auto;
+  }
 }
 
 .slideshow-btn {
-  width: min-content;
   padding: 0.5rem 0 0.5rem 0.5rem;
   margin-top: 5px;
   @include mixins.transition;
@@ -25,8 +29,11 @@ header {
 }
 
 @include mixins.for-min-size(600px) {
-  .slideshow-btn {
-    width: auto;
+  header {
+    svg {
+      width: 170px;
+      height: auto;
+    }
   }
 }
 

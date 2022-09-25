@@ -11,6 +11,10 @@
     }
   }
 
+  .painting-name {
+    font-size: 1.2rem;
+  }
+
   img {
     width: 100%;
   }
@@ -36,4 +40,29 @@
   justify-content: flex-end;
   z-index: 50;
   background: linear-gradient(0deg, hsla(0, 0%, 0%, 0.753) 20%, transparent 60%);
+}
+
+// painting name font-size alterations
+$breakpoints: (
+  450px, 500px,
+  600px, 800px,
+  930px, 1100px, 
+  1280px
+);
+
+@for $i from 1 through length($breakpoints) {
+  $size: nth($breakpoints, $i);
+  @include mixins.for-min-size($size) {
+    .image-card {
+      @if $i % 2 == 0 {
+        .painting-name {
+          font-size: 1.2rem;
+        }
+      } @else {
+        .painting-name {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
 }
