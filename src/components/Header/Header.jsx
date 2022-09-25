@@ -7,6 +7,7 @@ export const Header = () => {
   return (
     <div className="header-wrapper">
       <header>
+        {/* Add invisible link text */}
         <Link to={rootPath}>
           <Logo />
         </Link>

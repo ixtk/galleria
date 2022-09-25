@@ -10,7 +10,9 @@ export const PaintingPage = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL
   const params = useParams()
   const paintingName = formatPaintingName(params.paintingName, true)
-  const painting = data.find((e) => e.name.toLowerCase() === paintingName)
+  const { artist, images, ...painting } = data.find(
+    (e) => e.name.toLowerCase() === paintingName
+  )
 
   return (
     <>
@@ -20,30 +22,40 @@ export const PaintingPage = () => {
             <MaximizeIcon />
             <span>view image</span>
           </button>
+          {/* https://stackoverflow.com/questions/68191793/specify-explicit-width-and-height-for-picture-tag */}
           <picture>
             <source
               media="(min-width: 43.75rem)"
-              srcSet={`${baseUrl}/${painting.images.hero.large}`}
+              width={images.hero_large.width}
+              height={images.hero_large.height}
+              srcSet={`${baseUrl}/${images.hero_large.public_id}`}
             />
             <img
               className="painting-img"
-              src={`${baseUrl}/${painting.images.hero.small}`}
-              alt={`${painting.name} by ${painting.artist.name}`}
+              src={`${baseUrl}/${images.hero_small.public_id}`}
+              alt={`${painting.name} by ${artist}`}
+              width={images.hero_small.width}
+              height={images.hero_small.height}
             />
           </picture>
           <div className="painting-overlay">
             <h1 className="painting-name">{painting.name}</h1>
-            <span className="painting-author">{painting.artist.name}</span>
+            <span className="painting-author">{artist}</span>
             <img
               className="artist-img"
-              src={`${baseUrl}/${painting.artist.image}`}
-              alt={painting.artist.name}
+              src={`${baseUrl}/${images.artist.public_id}`}
+              alt={artist}
+              width={images.artist.width}
+              height={images.artist.height}
             />
           </div>
+          {/* displayed at larger screens for layout purposes */}
           <img
             className="artist-img-lg"
-            src={`${baseUrl}/${painting.artist.image}`}
-            alt={painting.artist.name}
+            src={`${baseUrl}/${images.artist.public_id}`}
+            alt={artist}
+            width={images.artist.width}
+            height={images.artist.height}
           />
         </div>
         <div className="description-wrapper">
@@ -55,13 +67,12 @@ export const PaintingPage = () => {
         </div>
       </div>
       {/* <ImageModal
-        imageUrl={`${baseUrl}/${painting.images.hero.large}`}
-        altText={`${painting.name} by ${painting.artist.name}`}
+        imageUrl={`${baseUrl}/${images.hero_large.public_id}`}
+        altText={`${painting.name} by ${artist}`}
+        width={images.hero_large.width}
+        height={images.hero_large.height}
       /> */}
-      <SlideshowControl
-        paintingAuthor={painting.artist.name}
-        paintingName={painting.name}
-      />
+      <SlideshowControl paintingAuthor={artist} paintingName={painting.name} />
     </>
   )
 }

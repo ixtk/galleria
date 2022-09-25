@@ -2,15 +2,21 @@ import { Link } from "react-router-dom"
 import { rootPath, formatPaintingName } from "@/utils"
 import "./ImageCard.scss"
 
-export const ImageCard = ({ thumbnailUrl, paintingName, paintingAuthor }) => {
+export const ImageCard = ({
+  thumbnailUrl,
+  paintingName,
+  paintingAuthor,
+  ...dimensions
+}) => {
   return (
     <div className="image-card">
       <Link to={`${rootPath}/${formatPaintingName(paintingName)}`}>
         <div className="image-wrapper">
-          {/* TODO: fix layout shifts */}
           <img
             src={thumbnailUrl}
             alt={`${paintingName} by ${paintingAuthor}`}
+            width={dimensions.width}
+            height={dimensions.height}
           />
         </div>
         <div className="image-overlay">
