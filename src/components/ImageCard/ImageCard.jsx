@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { rootPath, formatPaintingName } from "@/utils"
+import { rootPath, formatPaintingName } from "@/utils/routeHelpers"
 import "./ImageCard.scss"
 
 export const ImageCard = ({

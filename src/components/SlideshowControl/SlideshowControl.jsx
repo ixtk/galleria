@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
+import { rootPath, formatPaintingName } from "@/utils/routeHelpers"
+import { getPaintingNames } from "@/utils/getPaintings"
 import { ReactComponent as BackButtonIcon } from "@/assets/back-button.svg"
 import { ReactComponent as NextButtonIcon } from "@/assets/next-button.svg"
 import "./SlideshowControl.scss"
-import { rootPath, formatPaintingName } from "@/utils"
-import data from "@/data.json"
 
-const paintingNames = data.map((e) => e.name)
+const paintingNames = getPaintingNames()
 
 export const SlideshowControl = ({ paintingName, paintingAuthor }) => {
   const paintingIndex = paintingNames.indexOf(paintingName)

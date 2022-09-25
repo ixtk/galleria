@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
+import { rootPath } from "@/utils/routeHelpers"
 import { ReactComponent as Logo } from "@/assets/logo.svg"
 import "./Header.scss"
-import { rootPath } from "@/utils"
 
 export const Header = () => {
   return (

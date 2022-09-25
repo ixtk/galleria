@@ -8,9 +8,9 @@ import {
 import { Header } from "@/components/Header"
 import { Gallery } from "@/components/Gallery"
 import { PaintingPage } from "@/components/PaintingPage"
-import "./App.scss"
-import { rootPath } from "@/utils"
 import { NoMatch } from "@/components/NoMatch"
+import { rootPath } from "@/utils/routeHelpers"
+import "./App.scss"
 
 const PageLayout = () => {
   return (

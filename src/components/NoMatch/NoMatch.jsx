@@ -1,6 +1,6 @@
 import "./NoMatch.scss"
 import { Link } from "react-router-dom"
-import { rootPath } from "@/utils"
+import { rootPath } from "@/utils/routeHelpers"
 
 export const NoMatch = () => {
   return (

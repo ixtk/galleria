@@ -1,21 +1,15 @@
-import { SlideshowControl } from "@/components/SlideshowControl"
-import { ReactComponent as MaximizeIcon } from "@/assets/view-image.svg"
-import { ImageModal } from "@/components/ImageModal"
-import { formatPaintingName } from "@/utils"
-import data from "@/data.json"
 import { useState, useEffect } from "react"
-import "./PaintingPage.scss"
 import { useParams } from "react-router-dom"
+import { SlideshowControl } from "@/components/SlideshowControl"
+import { ImageModal } from "@/components/ImageModal"
+import { getPainting } from "@/utils/getPaintings"
+import { ReactComponent as MaximizeIcon } from "@/assets/view-image.svg"
+import "./PaintingPage.scss"
 
 export const PaintingPage = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL
-  const params = useParams()
-  const paintingName = formatPaintingName(params.paintingName, true)
-  const { artist, images, ...painting } = data.find(
-    (e) => e.name.toLowerCase() === paintingName
-  )
-
   const [modalOpen, setModalOpen] = useState(false)
+  const { paintingName } = useParams()
+  const { name, artist, images, ...painting } = getPainting(paintingName)
 
   useEffect(() => {
     document.querySelector("body").style.overflow = modalOpen
@@ -40,22 +34,22 @@ export const PaintingPage = () => {
               media="(min-width: 43.75rem)"
               width={images.hero_large.width}
               height={images.hero_large.height}
-              srcSet={`${baseUrl}/${images.hero_large.public_id}`}
+              srcSet={images.hero_large.url}
             />
             <img
               className="painting-img"
-              src={`${baseUrl}/${images.hero_small.public_id}`}
-              alt={`${painting.name} by ${artist}`}
+              src={images.hero_small.url}
+              alt={`${name} by ${artist}`}
               width={images.hero_small.width}
               height={images.hero_small.height}
             />
           </picture>
           <div className="painting-overlay">
-            <h1 className="painting-name">{painting.name}</h1>
+            <h1 className="painting-name">{name}</h1>
             <span className="painting-author">{artist}</span>
             <img
               className="artist-img"
-              src={`${baseUrl}/${images.artist.public_id}`}
+              src={images.artist.url}
               alt={artist}
               width={images.artist.width}
               height={images.artist.height}
@@ -64,7 +58,7 @@ export const PaintingPage = () => {
           {/* displayed at larger screens for layout purposes */}
           <img
             className="artist-img-lg"
-            src={`${baseUrl}/${images.artist.public_id}`}
+            src={images.artist.url}
             alt={artist}
             width={images.artist.width}
             height={images.artist.height}
@@ -80,14 +74,14 @@ export const PaintingPage = () => {
       </div>
       {modalOpen && (
         <ImageModal
-          imageUrl={`${baseUrl}/${images.hero_large.public_id}`}
-          altText={`${painting.name} by ${artist}`}
+          imageUrl={images.hero_large.url}
+          altText={`${name} by ${artist}`}
           width={images.hero_large.width}
           height={images.hero_large.height}
           closeModal={() => setModalOpen(false)}
         />
       )}
-      <SlideshowControl paintingAuthor={artist} paintingName={painting.name} />
+      <SlideshowControl paintingAuthor={artist} paintingName={name} />
     </>
   )
 }
