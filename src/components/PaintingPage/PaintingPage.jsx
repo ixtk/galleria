@@ -3,6 +3,7 @@ import { ReactComponent as MaximizeIcon } from "@/assets/view-image.svg"
 import { ImageModal } from "@/components/ImageModal"
 import { formatPaintingName } from "@/utils"
 import data from "@/data.json"
+import { useState, useEffect } from "react"
 import "./PaintingPage.scss"
 import { useParams } from "react-router-dom"
 
@@ -14,11 +15,22 @@ export const PaintingPage = () => {
     (e) => e.name.toLowerCase() === paintingName
   )
 
+  const [modalOpen, setModalOpen] = useState(false)
+
+  useEffect(() => {
+    document.querySelector("body").style.overflow = modalOpen
+      ? "hidden"
+      : "auto"
+    document
+      .querySelector("html")
+      .style.setProperty("--modal-visibility", modalOpen ? "visible" : "hidden")
+  })
+
   return (
     <>
       <div className="painting-page">
         <div className="painting-wrapper">
-          <button className="view-image-btn">
+          <button className="view-image-btn" onClick={() => setModalOpen(true)}>
             <MaximizeIcon />
             <span>view image</span>
           </button>
@@ -66,12 +78,15 @@ export const PaintingPage = () => {
           </a>
         </div>
       </div>
-      {/* <ImageModal
-        imageUrl={`${baseUrl}/${images.hero_large.public_id}`}
-        altText={`${painting.name} by ${artist}`}
-        width={images.hero_large.width}
-        height={images.hero_large.height}
-      /> */}
+      {modalOpen && (
+        <ImageModal
+          imageUrl={`${baseUrl}/${images.hero_large.public_id}`}
+          altText={`${painting.name} by ${artist}`}
+          width={images.hero_large.width}
+          height={images.hero_large.height}
+          closeModal={() => setModalOpen(false)}
+        />
+      )}
       <SlideshowControl paintingAuthor={artist} paintingName={painting.name} />
     </>
   )

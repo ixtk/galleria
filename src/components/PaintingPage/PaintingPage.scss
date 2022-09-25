@@ -96,6 +96,10 @@
     margin-right: auto;
     width: min-content;
     translate: -60px 0;
+
+    .painting-img {
+      max-width: 450px;
+    }
   }
 
   .view-image-btn {
@@ -136,19 +140,17 @@
     right: unset;
     translate: -10% -60%;
   }
-
-  .painting-img {
-    max-width: 450px;
-  }
 }
 
 @include mixins.for-min-size(820px) {
-  .painting-year {
-    translate: -25% -60%;
+  .painting-wrapper {
+    .painting-img {
+      max-width: 500px;
+    }
   }
 
-  .painting-img {
-    max-width: 500px;
+  .painting-year {
+    translate: -25% -60%;
   }
 
   .painting-overlay {
