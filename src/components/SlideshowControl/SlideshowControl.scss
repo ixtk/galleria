@@ -1,5 +1,9 @@
 @use '@/partials/mixins';
 
+:root {
+  --progress-bar-width: unset;
+}
+
 .slideshow-control {
   display: flex;
   align-items: center;
@@ -28,7 +32,7 @@
   &::after {
     content: '';
     position: absolute;
-    width: 30%;
+    width: var(--progress-bar-width);
     height: 100%;
     background-color: var(--primary-dark);
   }

@@ -34,3 +34,11 @@ export const getPainting = (name) => {
 export const getPaintingNames = () => {
   return data.map((e) => e.name)
 }
+
+export const getNextPaintingName = (currentPaintingName) => {
+  const paintingNames = getPaintingNames()
+  const paintingIndex = paintingNames.indexOf(currentPaintingName)
+
+  const nextPaintinName = paintingNames[paintingIndex + 1] || paintingNames[0]
+  return formatPaintingName(nextPaintinName)
+}

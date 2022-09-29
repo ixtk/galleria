@@ -1,24 +1,41 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { SlideshowControl } from "@/components/SlideshowControl"
 import { ImageModal } from "@/components/ImageModal"
-import { getPainting } from "@/utils/getPaintings"
+import { getPainting, getNextPaintingName } from "@/utils/getPaintings"
+import { rootPath } from "@/utils/routeHelpers"
 import { ReactComponent as MaximizeIcon } from "@/assets/view-image.svg"
 import "./PaintingPage.scss"
 
-export const PaintingPage = () => {
+const SLIDESHOW_INTERVAL = 3000
+
+export const PaintingPage = ({ slideshowOn }) => {
   const [modalOpen, setModalOpen] = useState(false)
   const { paintingName } = useParams()
+  const navigate = useNavigate()
   const { name, artist, images, ...painting } = getPainting(paintingName)
 
   useEffect(() => {
-    document.querySelector("body").style.overflow = modalOpen
-      ? "hidden"
-      : "auto"
-    document
-      .querySelector("html")
-      .style.setProperty("--modal-visibility", modalOpen ? "visible" : "hidden")
-  })
+    document.title = name
+  }, [name])
+
+  useEffect(() => {
+    document.body.style.overflow = modalOpen ? "hidden" : "auto"
+    document.documentElement.style.setProperty(
+      "--modal-visibility",
+      modalOpen ? "visible" : "hidden"
+    )
+  }, [modalOpen])
+
+  useEffect(() => {
+    if (slideshowOn) {
+      const intervalCallback = () => {
+        navigate(`${rootPath}/${getNextPaintingName(name)}`, { replace: true })
+      }
+      const interval = setInterval(intervalCallback, SLIDESHOW_INTERVAL)
+      return () => clearInterval(interval)
+    }
+  }, [slideshowOn, name, navigate])
 
   return (
     <>
@@ -67,17 +84,22 @@ export const PaintingPage = () => {
         <div className="description-wrapper">
           <span className="painting-year">{painting.year}</span>
           <p>{painting.description}</p>
-          <a className="source-link" href={painting.source} target="_blank">
+          <a
+            className="source-link"
+            rel="noreferrer"
+            href={painting.source}
+            target="_blank"
+          >
             go to source
           </a>
         </div>
       </div>
       {modalOpen && (
         <ImageModal
-          imageUrl={images.hero_large.url}
+          imageUrl={images.gallery.url}
           altText={`${name} by ${artist}`}
-          width={images.hero_large.width}
-          height={images.hero_large.height}
+          width={images.gallery.width}
+          height={images.gallery.height}
           closeModal={() => setModalOpen(false)}
         />
       )}
