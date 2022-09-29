@@ -13,7 +13,6 @@ export const Header = ({ slideshowToggle, slideshowOn }) => {
     if (pathname === rootPath) {
       navigate(`${rootPath}/${paintingNames[0]}`)
     }
-    // move this to painting page
     slideshowToggle(!slideshowOn)
   }
 
@@ -21,7 +20,6 @@ export const Header = ({ slideshowToggle, slideshowOn }) => {
     if (slideshowOn) {
       slideshowToggle(false)
     }
-    document.title = "galleria"
   }
 
   return (

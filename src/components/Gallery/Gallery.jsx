@@ -1,8 +1,11 @@
 import { ImageCard } from "@/components/ImageCard"
 import { getPaintings } from "@/utils/getPaintings"
 import "./Gallery.scss"
+import { useDocumentTitle } from "@/hooks/useDocumentTitle"
 
 export const Gallery = () => {
+  useDocumentTitle("galleria")
+
   const paintings = getPaintings()
 
   const imageCards = paintings.map(

@@ -13,10 +13,10 @@ import { NoMatch } from "@/components/NoMatch"
 import { rootPath } from "@/utils/routeHelpers"
 import "./App.scss"
 
-const PageLayout = ({ slideshowToggle, slideshowOn }) => {
+const PageLayout = ({ children }) => {
   return (
     <>
-      <Header slideshowToggle={slideshowToggle} slideshowOn={slideshowOn} />
+      {children}
       <main>
         <Outlet />
       </main>
@@ -33,10 +33,12 @@ export const App = () => {
         <Route path="/" element={<Navigate to={rootPath} replace={true} />} />
         <Route
           element={
-            <PageLayout
-              slideshowOn={slideshowOn}
-              slideshowToggle={setSlideshowOn}
-            />
+            <PageLayout>
+              <Header
+                slideshowToggle={setSlideshowOn}
+                slideshowOn={slideshowOn}
+              />
+            </PageLayout>
           }
         >
           <Route path={rootPath} element={<Gallery />} />
@@ -45,6 +47,7 @@ export const App = () => {
             element={<PaintingPage slideshowOn={slideshowOn} />}
           />
         </Route>
+        <Route path="/error" element={<NoMatch />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </BrowserRouter>

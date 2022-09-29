@@ -1,41 +1,30 @@
-import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { SlideshowControl } from "@/components/SlideshowControl"
 import { ImageModal } from "@/components/ImageModal"
 import { getPainting, getNextPaintingName } from "@/utils/getPaintings"
 import { rootPath } from "@/utils/routeHelpers"
+import { useModal } from "@/hooks/useModal"
+import { useDocumentTitle } from "@/hooks/useDocumentTitle"
+import { useInterval } from "@/hooks/useInterval"
 import { ReactComponent as MaximizeIcon } from "@/assets/view-image.svg"
 import "./PaintingPage.scss"
 
-const SLIDESHOW_INTERVAL = 3000
-
 export const PaintingPage = ({ slideshowOn }) => {
-  const [modalOpen, setModalOpen] = useState(false)
   const { paintingName } = useParams()
   const navigate = useNavigate()
-  const { name, artist, images, ...painting } = getPainting(paintingName)
+  const paintingData = getPainting(paintingName)
+  const { name, artist, images, ...painting } = paintingData
+  const [modalOpen, setModalOpen] = useModal(false)
 
-  useEffect(() => {
-    document.title = name
-  }, [name])
+  useDocumentTitle(name)
 
-  useEffect(() => {
-    document.body.style.overflow = modalOpen ? "hidden" : "auto"
-    document.documentElement.style.setProperty(
-      "--modal-visibility",
-      modalOpen ? "visible" : "hidden"
-    )
-  }, [modalOpen])
-
-  useEffect(() => {
-    if (slideshowOn) {
-      const intervalCallback = () => {
-        navigate(`${rootPath}/${getNextPaintingName(name)}`, { replace: true })
-      }
-      const interval = setInterval(intervalCallback, SLIDESHOW_INTERVAL)
-      return () => clearInterval(interval)
-    }
-  }, [slideshowOn, name, navigate])
+  useInterval(
+    () => {
+      navigate(`${rootPath}/${getNextPaintingName(name)}`, { replace: true })
+    },
+    3000,
+    [slideshowOn, name]
+  )
 
   return (
     <>
