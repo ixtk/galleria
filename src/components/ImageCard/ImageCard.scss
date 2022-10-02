@@ -4,11 +4,6 @@
   a {
     display: block;
     position: relative;
-
-    &:hover .image-wrapper::before {
-      visibility: visible;
-      opacity: 1;
-    }
   }
 
   .painting-name {

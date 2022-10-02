@@ -1,6 +1,7 @@
 @use '@/partials/reset';
 @use '@/partials/typography';
 @use '@/partials/mixins';
+@use '@/partials/element-states';
 
 :root {
   --primary-dark: hsl(0, 0%, 0%);
@@ -16,4 +17,17 @@
   :root {
     --gap-size: 1.5rem;
   }
+}
+
+// https: //piccalil.li/quick-tip/visually-hidden/
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }

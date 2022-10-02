@@ -21,7 +21,7 @@ export const SlideshowControl = ({ paintingName, paintingAuthor }) => {
   })
 
   return (
-    <div className="slideshow-control">
+    <footer className="slideshow-control">
       <div className="progress-bar"></div>
       <div className="current-painting">
         <h2 className="painting-name">{paintingName}</h2>
@@ -35,6 +35,7 @@ export const SlideshowControl = ({ paintingName, paintingAuthor }) => {
           className={backBtnDisabled ? "disabled" : ""}
         >
           <BackButtonIcon />
+          <span className="visually-hidden">Go to previous painting</span>
         </Link>
         <Link
           to={`${rootPath}/${formatPaintingName(
@@ -43,8 +44,9 @@ export const SlideshowControl = ({ paintingName, paintingAuthor }) => {
           className={nextBtnDisabled ? "disabled" : ""}
         >
           <NextButtonIcon />
+          <span className="visually-hidden">Go to next painting</span>
         </Link>
       </div>
-    </div>
+    </footer>
   )
 }

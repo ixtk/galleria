@@ -25,9 +25,9 @@ export const Header = ({ slideshowToggle, slideshowOn }) => {
   return (
     <div className="header-wrapper">
       <header>
-        {/* Add invisible link text */}
         <Link to={rootPath} onClick={handleHomeRedirect}>
           <Logo />
+          <span className="visually-hidden">Galleria home page</span>
         </Link>
         <button className="slideshow-btn" onClick={handleSlideshowToggle}>
           {slideshowOn ? "stop" : "start"} slideshow

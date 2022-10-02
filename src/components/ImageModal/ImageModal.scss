@@ -16,10 +16,14 @@
 .modal-content {
   position: absolute;
   display: flex;
+  max-width: 900px;
   flex-direction: column;
+  margin: 0 1.3rem 1.3rem 1.3rem;
 
   .painting-img {
-    max-width: 70vmin;
+    max-height: calc(90vh - 1.3rem);
+    max-width: 100%;
+    width: auto;
   }
 }
 
@@ -27,10 +31,6 @@
   padding: 0.5rem 0 0.5rem 0.5rem;
   margin-left: auto;
   @include mixins.transition;
-}
-
-.close-btn:hover {
-  color: hsl(0, 0%, 80%);
 }
 
 body {

@@ -29,7 +29,7 @@ export const PaintingPage = ({ slideshowOn }) => {
   return (
     <>
       <div className="painting-page">
-        <div className="painting-wrapper">
+        <figure className="painting-wrapper">
           <button className="view-image-btn" onClick={() => setModalOpen(true)}>
             <MaximizeIcon />
             <span>view image</span>
@@ -51,8 +51,10 @@ export const PaintingPage = ({ slideshowOn }) => {
             />
           </picture>
           <div className="painting-overlay">
-            <h1 className="painting-name">{name}</h1>
-            <span className="painting-author">{artist}</span>
+            <figcaption>
+              <h1 className="painting-name">{name}</h1>
+              <span className="painting-author">{artist}</span>
+            </figcaption>
             <img
               className="artist-img"
               src={images.artist.url}
@@ -69,7 +71,7 @@ export const PaintingPage = ({ slideshowOn }) => {
             width={images.artist.width}
             height={images.artist.height}
           />
-        </div>
+        </figure>
         <div className="description-wrapper">
           <span className="painting-year">{painting.year}</span>
           <p>{painting.description}</p>

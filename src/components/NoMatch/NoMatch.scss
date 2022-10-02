@@ -7,8 +7,4 @@
     text-decoration: underline;
     @include mixins.transition;
   }
-
-  a:hover {
-    color: var(--secondary-dark);
-  }
 }

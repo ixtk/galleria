@@ -1,0 +1,40 @@
+@use '@/partials/mixins';
+
+.control-buttons a.disabled {
+  color: hsla(0, 0%, 0%, 0.2);
+  pointer-events: none;
+}
+
+@include mixins.for-min-size(1100px) {
+  .slideshow-btn:hover {
+    color: var(--primary-dark);
+  }
+
+  .image-card a:hover .image-wrapper::before {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .close-btn:hover {
+    color: hsl(0, 0%, 80%);
+  }
+
+  .error-page a:hover {
+    color: var(--secondary-dark);
+  }
+
+  .view-image-btn:hover {
+    background-color: hsla(0, 0%, 100%, 0.85);
+    color: var(--primary-dark);
+  }
+
+  .description-wrapper a:hover {
+    color: var(--primary-dark);
+  }
+
+  .control-buttons {
+    a:hover {
+      color: var(--secondary-dark);
+    }
+  }
+}

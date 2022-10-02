@@ -33,11 +33,6 @@
   left: var(--gap-size);
   @include mixins.transition(background-color);
 
-  &:hover {
-    background-color: hsla(0, 0%, 100%, 0.85);
-    color: var(--primary-dark);
-  }
-
   svg {
     width: 17px;
     height: 17px;
@@ -52,6 +47,7 @@
   position: absolute;
   translate: 0 1.5rem;
   max-width: 15vmin;
+  height: auto;
 }
 
 .artist-img-lg {
@@ -70,10 +66,7 @@
     text-decoration: underline;
     padding: 0.5rem 0.5rem 0.5rem 0;
     @include mixins.transition;
-  }
-
-  a:hover {
-    color: var(--primary-dark);
+    align-self: flex-start;
   }
 }
 

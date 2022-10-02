@@ -22,10 +22,6 @@ header {
   padding: 0.5rem 0 0.5rem 0.5rem;
   margin-top: 5px;
   @include mixins.transition;
-
-  &:hover {
-    color: var(--primary-dark);
-  }
 }
 
 @include mixins.for-min-size(600px) {
