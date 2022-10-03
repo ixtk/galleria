@@ -19,10 +19,7 @@ export const getPainting = (name) => {
   const paintingName = formatPaintingName(name, true)
   const painting = data.find((e) => e.name.toLowerCase() === paintingName)
 
-  // TODO
-  // if (!paintingData) {
-  //   return null
-  // }
+  if (!painting) return {}
 
   for (const type in painting.images) {
     painting.images[type].url = `${baseUrl}/${painting.images[type].public_id}`

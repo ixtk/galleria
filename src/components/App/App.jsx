@@ -47,8 +47,7 @@ export const App = () => {
             element={<PaintingPage slideshowOn={slideshowOn} />}
           />
         </Route>
-        <Route path="/error" element={<NoMatch />} />
-        <Route path="*" element={<NoMatch />} />
+        <Route path="*" element={<NoMatch message="Page not found" />} />
       </Routes>
     </BrowserRouter>
   )

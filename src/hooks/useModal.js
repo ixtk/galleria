@@ -15,7 +15,7 @@ const setInert = (inert) => {
   }
 }
 
-export const useModal = (initialstate = false) => {
+export const useModal = (initialstate = false, paintingFound = true) => {
   const [modalOpen, setModalOpen] = useState(initialstate)
 
   const handleKeyDown = (e) => {
@@ -31,6 +31,7 @@ export const useModal = (initialstate = false) => {
   }
 
   useEffect(() => {
+    if (!paintingFound) return
     const modalWrapper = document.querySelector(".modal-wrapper")
     document.body.style.overflow = modalOpen ? "hidden" : "auto"
     document.documentElement.style.setProperty(
@@ -51,7 +52,7 @@ export const useModal = (initialstate = false) => {
         document.querySelector(".view-image-btn").focus()
       }
     }
-  }, [modalOpen])
+  }, [modalOpen, paintingFound])
 
   return [modalOpen, setModalOpen]
 }

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { rootPath } from "@/utils/routeHelpers"
+import { rootPath, formatPaintingName } from "@/utils/routeHelpers"
 import { getPaintingNames } from "@/utils/getPaintings"
 import { ReactComponent as Logo } from "@/assets/logo.svg"
 import "./Header.scss"
@@ -10,8 +10,8 @@ export const Header = ({ slideshowToggle, slideshowOn }) => {
   const navigate = useNavigate()
 
   const handleSlideshowToggle = () => {
-    if (pathname === rootPath) {
-      navigate(`${rootPath}/${paintingNames[0]}`)
+    if (pathname === rootPath || pathname === `${rootPath}/`) {
+      navigate(`${rootPath}/${formatPaintingName(paintingNames[0])}`)
     }
     slideshowToggle(!slideshowOn)
   }

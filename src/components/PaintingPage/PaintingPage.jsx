@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { SlideshowControl } from "@/components/SlideshowControl"
 import { ImageModal } from "@/components/ImageModal"
+import { NoMatch } from "@/components/NoMatch"
 import { getPainting, getNextPaintingName } from "@/utils/getPaintings"
 import { rootPath } from "@/utils/routeHelpers"
 import { useModal } from "@/hooks/useModal"
@@ -9,22 +10,33 @@ import { useInterval } from "@/hooks/useInterval"
 import { ReactComponent as MaximizeIcon } from "@/assets/view-image.svg"
 import "./PaintingPage.scss"
 
+const SLIDESHOW_INTERVAL = 5000
+
 export const PaintingPage = ({ slideshowOn }) => {
   const { paintingName } = useParams()
   const navigate = useNavigate()
   const paintingData = getPainting(paintingName)
-  const { name, artist, images, ...painting } = paintingData
-  const [modalOpen, setModalOpen] = useModal(false)
 
-  useDocumentTitle(name)
+  // used to determine if hooks should proceed with logic
+  const paintingFound = Object.keys(paintingData).length > 0
+
+  const { name, artist, images, ...painting } = paintingData
+  const [modalOpen, setModalOpen] = useModal(false, paintingFound)
+
+  useDocumentTitle(name ? name : "galleria")
 
   useInterval(
     () => {
       navigate(`${rootPath}/${getNextPaintingName(name)}`, { replace: true })
     },
-    3000,
-    [slideshowOn, name]
+    SLIDESHOW_INTERVAL,
+    [slideshowOn, name],
+    paintingFound
   )
+
+  if (!paintingFound) {
+    return <NoMatch message="Painting not found" />
+  }
 
   return (
     <>
