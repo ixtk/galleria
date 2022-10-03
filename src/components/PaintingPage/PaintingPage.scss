@@ -164,7 +164,8 @@
     display: block;
     position: absolute;
     right: 0;
-    transform: translate(calc(100% + var(--gap-size)) -50%);
+    $translateX: calc(100% + var(--gap-size));
+    transform: translate($translateX, -50%);
   }
 
   .painting-wrapper {
