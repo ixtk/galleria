@@ -1,3 +1,5 @@
+This is a solution to the [Galleria slideshow site challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/galleria-slideshow-site-tEA4pwsa6). It features gallery of famous paintings with slideshow functionality.
+
 ### Built with
 
 - React.js
