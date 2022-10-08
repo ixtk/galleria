@@ -15,7 +15,7 @@ const setInert = (inert) => {
   }
 }
 
-export const useModal = (initialstate = false, paintingFound = true) => {
+export const useModal = (initialstate = false) => {
   const [modalOpen, setModalOpen] = useState(initialstate)
 
   const handleKeyDown = (e) => {
@@ -31,28 +31,25 @@ export const useModal = (initialstate = false, paintingFound = true) => {
   }
 
   useEffect(() => {
-    if (!paintingFound) return
-    const modalWrapper = document.querySelector(".modal-wrapper")
-    document.body.style.overflow = modalOpen ? "hidden" : "auto"
-    document.documentElement.style.setProperty(
-      "--modal-visibility",
-      modalOpen ? "visible" : "hidden"
-    )
+    if (!modalOpen) return
 
-    if (modalOpen) {
-      window.addEventListener("keydown", handleKeyDown)
-      modalWrapper.addEventListener("click", handleOutsideClick)
-      setInert(true)
-    }
+    document.body.style.overflow = "hidden"
+    document.documentElement.style.setProperty("--modal-visibility", "visible")
+
+    const modalWrapper = document.querySelector(".modal-wrapper")
+    modalWrapper.addEventListener("click", handleOutsideClick)
+    window.addEventListener("keydown", handleKeyDown)
+
+    setInert(true)
 
     return () => {
-      if (modalOpen) {
-        window.removeEventListener("keydown", handleKeyDown)
-        setInert(false)
-        document.querySelector(".view-image-btn").focus()
-      }
+      document.body.style.overflow = "auto"
+      document.documentElement.style.setProperty("--modal-visibility", "hidden")
+      window.removeEventListener("keydown", handleKeyDown)
+      setInert(false)
+      document.querySelector(".view-image-btn").focus()
     }
-  }, [modalOpen, paintingFound])
+  }, [modalOpen])
 
   return [modalOpen, setModalOpen]
 }

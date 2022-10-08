@@ -1,15 +1,10 @@
 import { useEffect } from "react"
 
-export const useInterval = (
-  callback,
-  delay,
-  [slideshowOn, name],
-  paintingFound = true
-) => {
+export const useInterval = (callback, delay, [slideshowOn, name]) => {
   useEffect(() => {
-    if (!slideshowOn || !paintingFound) return
+    if (!slideshowOn) return
 
     const id = setInterval(callback, delay)
     return () => clearInterval(id)
-  }, [slideshowOn, name, callback, delay, paintingFound])
+  }, [slideshowOn, name, callback, delay])
 }

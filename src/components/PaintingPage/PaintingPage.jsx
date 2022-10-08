@@ -16,12 +16,9 @@ export const PaintingPage = ({ slideshowOn }) => {
   const { paintingName } = useParams()
   const navigate = useNavigate()
   const paintingData = getPainting(paintingName)
-
-  // used to determine if hooks should proceed with logic
   const paintingFound = Object.keys(paintingData).length > 0
-
   const { name, artist, images, ...painting } = paintingData
-  const [modalOpen, setModalOpen] = useModal(false, paintingFound)
+  const [modalOpen, setModalOpen] = useModal(false)
 
   useDocumentTitle(name ? name : "galleria")
 
@@ -30,8 +27,7 @@ export const PaintingPage = ({ slideshowOn }) => {
       navigate(`${rootPath}/${getNextPaintingName(name)}`, { replace: true })
     },
     SLIDESHOW_INTERVAL,
-    [slideshowOn, name],
-    paintingFound
+    [slideshowOn, name]
   )
 
   if (!paintingFound) {
